@@ -6,13 +6,13 @@ import lombok.Builder;
 import lombok.Value;
 
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Value
 @Builder
 public class PersonWorkSectorsInfo {
     Id id;
-    Person.Id personId;
+    Person person;
+    Set<WorkSector.Id> selectedWorkSectorIds;
     Boolean isAcceptTermsOfService;
 
     @Value(staticConstructor = "of")

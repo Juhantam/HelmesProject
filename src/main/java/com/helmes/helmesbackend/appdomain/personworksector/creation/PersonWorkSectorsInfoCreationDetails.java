@@ -7,7 +7,7 @@ import java.util.Set;
 
 @Value
 @Builder
-public class PersonWorkSectorsCreationDetails {
+public class PersonWorkSectorsInfoCreationDetails {
     String personName;
     Set<Long> workSectorIds;
     Boolean isAcceptTermsOfService;

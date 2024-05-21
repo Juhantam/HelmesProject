@@ -1,6 +1,6 @@
 package com.helmes.helmesbackend.web.personworksector;
 
-import com.helmes.helmesbackend.appdomain.personworksector.creation.PersonWorkSectorsCreationDetails;
+import com.helmes.helmesbackend.appdomain.personworksector.creation.PersonWorkSectorsInfoCreationDetails;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,11 +18,11 @@ public class PersonWorkSectorsCreationDto {
     private Boolean isAcceptTermsOfService;
 
 
-    public PersonWorkSectorsCreationDetails toDomain(PersonWorkSectorsCreationDto personWorkSectorsCreationDto) {
-        return PersonWorkSectorsCreationDetails.builder()
-                                               .personName(personWorkSectorsCreationDto.getPersonName())
-                                               .workSectorIds(personWorkSectorsCreationDto.getSelectedWorkSectorIds())
-                                               .isAcceptTermsOfService(personWorkSectorsCreationDto.getIsAcceptTermsOfService())
-                                               .build();
+    public PersonWorkSectorsInfoCreationDetails toDomain(PersonWorkSectorsCreationDto personWorkSectorsCreationDto) {
+        return PersonWorkSectorsInfoCreationDetails.builder()
+                                                   .personName(personWorkSectorsCreationDto.getPersonName())
+                                                   .workSectorIds(personWorkSectorsCreationDto.getSelectedWorkSectorIds())
+                                                   .isAcceptTermsOfService(personWorkSectorsCreationDto.getIsAcceptTermsOfService())
+                                                   .build();
     }
 }

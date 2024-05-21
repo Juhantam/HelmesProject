@@ -1,7 +1,5 @@
 package com.helmes.helmesbackend;
 
-import com.helmes.helmesbackend.adapter.database.person.PersonEntity;
-import com.helmes.helmesbackend.adapter.database.person.PersonEntityRepository;
 import com.helmes.helmesbackend.adapter.database.worksector.WorkSectorEntity;
 import com.helmes.helmesbackend.adapter.database.worksector.WorkSectorEntityRepository;
 import org.slf4j.Logger;
@@ -148,42 +146,5 @@ public class HelmesBackendApplication {
                                .parentSectorId(parentSectorId)
                                .build();
     }
-
-    /*@Bean
-    public CommandLineRunner demo(PersonEntityRepository repository) {
-        return (args) -> {
-            // save a few people
-            repository.save(PersonEntity.builder()
-                                    .name("Mardik")
-                                        .build());
-            repository.save(PersonEntity.builder()
-                                        .name("Yllar")
-                                        .build());
-
-            // fetch all people
-            log.info("People found with findAll():");
-            log.info("-------------------------------");
-            repository.findAll().forEach(customer -> {
-                log.info(customer.toString());
-            });
-            log.info("");
-
-            // fetch an individual person by ID
-            PersonEntity person = repository.findById(1L).get();
-            log.info("Person found with getById(1L):");
-            log.info("--------------------------------");
-            log.info(person.toString());
-            log.info("");
-
-            // fetch people by last name
-            log.info("Person found with findByName('Mardik'):");
-            log.info("--------------------------------------------");
-            repository.findByName("Mardik").forEach(mardik -> {
-                log.info(mardik.toString());
-            });
-            log.info("");
-        };
-    }*/
-
 
 }

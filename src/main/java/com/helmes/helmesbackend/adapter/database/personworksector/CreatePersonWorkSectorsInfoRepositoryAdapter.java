@@ -1,6 +1,5 @@
 package com.helmes.helmesbackend.adapter.database.personworksector;
 
-import com.helmes.helmesbackend.appdomain.personworksector.PersonWorkSectorsInfo;
 import com.helmes.helmesbackend.appdomain.personworksector.SavePersonWorkSectorsInfo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,13 +14,13 @@ class CreatePersonWorkSectorsInfoRepositoryAdapter implements SavePersonWorkSect
 
     @Override
     @Transactional
-    public PersonWorkSectorsInfo.Id execute(Request request) {
-        return PersonWorkSectorsInfo.Id.of(personWorkSectorsInfoEntityRepository
+    public Long execute(Request request) {
+        return personWorkSectorsInfoEntityRepository
                                                    .save(PersonWorkSectorsInfoEntity.builder()
                                                                                     .personId(request.getPersonId()
                                                                                                      .getValue())
                                                                                     .isAcceptTermsOfService(request.getIsAcceptTermsOfService())
                                                                                     .build())
-                                                                                .getId());
+                                                                                .getId();
     }
 }

@@ -16,14 +16,15 @@ public class CreatePersonWorkSectorsInfo {
     private final SavePersonWorkSectorsInfo savePersonWorkSectorsInfo;
 
     public PersonWorkSectorsInfo.Id execute(Request request) {
-        PersonWorkSectorsCreationDetails creationDetails = request.getCreationDetails();
-        Person.Id personId = createPerson.execute(CreatePerson.Request.of(creationDetails.getPersonName()));
+        PersonWorkSectorsInfoCreationDetails creationDetails = request.getCreationDetails();
+        Person.Id personId =
+                createPerson.execute(CreatePerson.Request.of(creationDetails.getPersonName()));
         createPersonWorkSectors.execute(CreatePersonWorkSectors.Request.of(creationDetails.getWorkSectorIds(), personId));
-        return savePersonWorkSectorsInfo.execute(SavePersonWorkSectorsInfo.Request.of(personId, creationDetails.getIsAcceptTermsOfService()));
+        return PersonWorkSectorsInfo.Id.of(savePersonWorkSectorsInfo.execute(SavePersonWorkSectorsInfo.Request.of(personId, creationDetails.getIsAcceptTermsOfService())));
     }
 
     @Value(staticConstructor = "of")
     public static class Request {
-        PersonWorkSectorsCreationDetails creationDetails;
+        PersonWorkSectorsInfoCreationDetails creationDetails;
     }
 }

@@ -1,5 +1,6 @@
 package com.helmes.helmesbackend.adapter.database.person;
 
+import com.helmes.helmesbackend.appdomain.person.Person;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,7 +11,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -29,4 +29,11 @@ public class PersonEntity {
     private Long id;
     @Column(name = "name", nullable = false)
     private String name;
+
+    public Person toDomain() {
+        return Person.builder()
+                     .id(Person.Id.of(getId()))
+                     .name(getName())
+                     .build();
+    }
 }

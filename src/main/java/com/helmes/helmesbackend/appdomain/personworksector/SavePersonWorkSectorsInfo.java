@@ -7,7 +7,7 @@ import java.util.Set;
 
 @FunctionalInterface
 public interface SavePersonWorkSectorsInfo {
-    PersonWorkSectorsInfo.Id execute(Request request);
+    Long execute(Request request);
 
     @Value(staticConstructor = "of")
     class Request {
