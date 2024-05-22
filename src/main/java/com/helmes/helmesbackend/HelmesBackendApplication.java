@@ -2,8 +2,6 @@ package com.helmes.helmesbackend;
 
 import com.helmes.helmesbackend.adapter.database.worksector.WorkSectorEntity;
 import com.helmes.helmesbackend.adapter.database.worksector.WorkSectorEntityRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,13 +12,12 @@ import java.util.Set;
 @SpringBootApplication
 public class HelmesBackendApplication {
 
-    private static final Logger log = LoggerFactory.getLogger(HelmesBackendApplication.class);
-
     public static void main(String[] args) {
         SpringApplication.run(HelmesBackendApplication.class, args);
     }
 
     @Bean
+    //For the sake of simplicity I am adding the work sectors here, but ofc in a real application I would use a liquibase script
     public CommandLineRunner createWorkSectors(WorkSectorEntityRepository repository) {
         return (args) -> {
             Long manufacturingId = repository.save(buildWorkSector("Manufacturing"))
