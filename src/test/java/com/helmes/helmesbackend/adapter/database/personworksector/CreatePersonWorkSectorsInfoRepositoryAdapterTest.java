@@ -2,6 +2,7 @@ package com.helmes.helmesbackend.adapter.database.personworksector;
 
 import com.helmes.helmesbackend.BaseAdapterTest;
 import com.helmes.helmesbackend.appdomain.person.Person;
+import com.helmes.helmesbackend.appdomain.personworksector.PersonWorkSectorsInfo;
 import com.helmes.helmesbackend.appdomain.personworksector.SavePersonWorkSectorsInfo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,9 @@ class CreatePersonWorkSectorsInfoRepositoryAdapterTest extends BaseAdapterTest {
     @Test
     void execute_save_personWorkSectorsInfo_returnsPersonId() {
         Long personWorkSectorsInfoId =
-                createPersonWorkSectorsInfoRepositoryAdapter.execute(SavePersonWorkSectorsInfo.Request.of(Person.Id.of(1L), true));
+                createPersonWorkSectorsInfoRepositoryAdapter
+                        .execute(SavePersonWorkSectorsInfo.Request.of(
+                                PersonWorkSectorsInfo.Id.of(null), Person.Id.of(1L), true));
 
         assertThat(personWorkSectorsInfoId).isNotNull();
     }
