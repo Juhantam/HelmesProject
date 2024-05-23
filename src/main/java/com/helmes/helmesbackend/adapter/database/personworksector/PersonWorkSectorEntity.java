@@ -1,5 +1,8 @@
 package com.helmes.helmesbackend.adapter.database.personworksector;
 
+import com.helmes.helmesbackend.appdomain.person.Person;
+import com.helmes.helmesbackend.appdomain.personworksector.PersonWorkSector;
+import com.helmes.helmesbackend.appdomain.worksector.WorkSector;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,4 +33,12 @@ public class PersonWorkSectorEntity {
     private Long workSectorId;
     @Column(name = "person_id", nullable = false)
     private Long personId;
+
+    public PersonWorkSector toDomain() {
+        return PersonWorkSector.builder()
+                               .id(PersonWorkSector.Id.of(getId()))
+                               .workSectorId(WorkSector.Id.of(getWorkSectorId()))
+                               .personId(Person.Id.of(getPersonId()))
+                               .build();
+    }
 }

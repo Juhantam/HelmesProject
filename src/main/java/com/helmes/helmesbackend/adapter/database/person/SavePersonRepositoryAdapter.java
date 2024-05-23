@@ -16,6 +16,8 @@ class SavePersonRepositoryAdapter implements SavePerson {
     @Transactional
     public Long execute(SavePerson.Request request) {
         return personEntityRepository.save(PersonEntity.builder()
+                                                       .id(request.getId()
+                                                                  .getValue())
                                                        .name(request.getPersonName())
                                                        .build())
                                      .getId();

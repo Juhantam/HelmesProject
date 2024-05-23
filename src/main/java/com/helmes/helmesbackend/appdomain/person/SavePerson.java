@@ -8,6 +8,7 @@ public interface SavePerson {
 
     @Value(staticConstructor = "of")
     class Request {
+        Person.Id id;
         String personName;
     }
 }

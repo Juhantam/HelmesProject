@@ -18,9 +18,11 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.cors(cors -> cors.configurationSource(this.corsConfigurationSource()))
-                    .cors(AbstractHttpConfigurer::disable)
+        //Just to access the db console
+        httpSecurity.headers(headers -> headers.frameOptions()
+                                               .disable())
                     .csrf(AbstractHttpConfigurer::disable);
+
         return httpSecurity.build();
     }
 

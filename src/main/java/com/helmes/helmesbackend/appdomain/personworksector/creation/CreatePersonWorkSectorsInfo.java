@@ -24,7 +24,7 @@ public class CreatePersonWorkSectorsInfo {
         Person.Id personId =
                 createPerson.execute(CreatePerson.Request.of(creationDetails.getPersonName()));
         createPersonWorkSectors.execute(CreatePersonWorkSectors.Request.of(creationDetails.getWorkSectorIds(), personId));
-        return PersonWorkSectorsInfo.Id.of(savePersonWorkSectorsInfo.execute(SavePersonWorkSectorsInfo.Request.of(personId, creationDetails.getIsAcceptTermsOfService())));
+        return PersonWorkSectorsInfo.Id.of(savePersonWorkSectorsInfo.execute(SavePersonWorkSectorsInfo.Request.of(PersonWorkSectorsInfo.Id.of(null), personId, creationDetails.getIsAcceptTermsOfService())));
     }
 
     @Value(staticConstructor = "of")
