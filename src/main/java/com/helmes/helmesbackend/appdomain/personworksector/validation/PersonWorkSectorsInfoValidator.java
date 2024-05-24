@@ -22,10 +22,7 @@ public class PersonWorkSectorsInfoValidator {
     public ValidationResult validateSave(PersonWorkSectorsInfoCreationDetails details) {
         Set<ValidationErrorCode> errorCodes = new HashSet<>();
 
-        if (details.getPersonName() == null || details.getPersonName()
-                                                      .isBlank()) {
-            errorCodes.add(NAME_IS_MANDATORY);
-        }
+        validatePersonName(details.getPersonName(), errorCodes);
 
         validateWorkSectorIds(details.getWorkSectorIds(), errorCodes);
 
@@ -41,11 +38,21 @@ public class PersonWorkSectorsInfoValidator {
             errorCodes.add(PERSON_WORK_SECTORS_INFO_ID_IS_MISSING);
         }
 
+        validatePersonName(details.getPersonName(), errorCodes);
+
         validateWorkSectorIds(details.getWorkSectorIds(), errorCodes);
 
         validateTermsOfService(details.getIsAcceptTermsOfService(), errorCodes);
 
         return ValidationResult.of(errorCodes);
+    }
+
+    private void validatePersonName(String personName,
+                                       Set<ValidationErrorCode> errorCodes) {
+        if (personName == null || personName.isBlank()) {
+            errorCodes.add(NAME_IS_MANDATORY);
+        }
+
     }
 
     private void validateWorkSectorIds(Set<Long> workSectorIds,
